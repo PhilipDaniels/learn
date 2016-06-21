@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitBestPractices", "AsyncAwaitBestPractices\AsyncAwaitBestPractices.csproj", "{A0CD06A4-970E-4159-8DE3-7B32C252E358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example1", "Example1\Example1.csproj", "{FD246D30-3094-4A99-AD82-BC1931DA05D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLib", "HelperLib\HelperLib.csproj", "{386A0B57-0EC9-4545-972B-761E8AD67E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerConsumerQueue", "ProducerConsumerQueue\ProducerConsumerQueue.csproj", "{0DE0A413-EA6B-4012-8426-10EC022EC3DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPLDataFlow", "TPLDataFlow\TPLDataFlow.csproj", "{2FFA66AC-6318-4848-B2B0-93F77A4B8C8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelInvokeAndForLoops", "ParallelInvokeAndForLoops\ParallelInvokeAndForLoops.csproj", "{2129AF74-A72F-4B7B-A4AD-EBDF1B86F9BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC68ABF6-3CBC-4060-BE94-3E8BBEA291F4}"
+	ProjectSection(SolutionItems) = preProject
+		ObjectHierarchy.pptx = ObjectHierarchy.pptx
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timers", "Timers\Timers.csproj", "{3D94A1E7-433F-4C1B-A87C-80680291DC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives", "Primitives\Primitives.csproj", "{3A50CCDF-2EAC-4642-BDAD-03532A29A303}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyLoading", "LazyLoading\LazyLoading.csproj", "{3C7253EF-D338-45B1-9364-BD3EC2112FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentCollections", "ConcurrentCollections\ConcurrentCollections.csproj", "{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderWriterLockSlimExample", "ReaderWriterLockSlim\ReaderWriterLockSlimExample.csproj", "{C5DC48B6-989D-4AB3-9BE7-559D37242032}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0CD06A4-970E-4159-8DE3-7B32C252E358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0CD06A4-970E-4159-8DE3-7B32C252E358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0CD06A4-970E-4159-8DE3-7B32C252E358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0CD06A4-970E-4159-8DE3-7B32C252E358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD246D30-3094-4A99-AD82-BC1931DA05D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD246D30-3094-4A99-AD82-BC1931DA05D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD246D30-3094-4A99-AD82-BC1931DA05D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD246D30-3094-4A99-AD82-BC1931DA05D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386A0B57-0EC9-4545-972B-761E8AD67E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386A0B57-0EC9-4545-972B-761E8AD67E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386A0B57-0EC9-4545-972B-761E8AD67E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386A0B57-0EC9-4545-972B-761E8AD67E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE0A413-EA6B-4012-8426-10EC022EC3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE0A413-EA6B-4012-8426-10EC022EC3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE0A413-EA6B-4012-8426-10EC022EC3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE0A413-EA6B-4012-8426-10EC022EC3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FFA66AC-6318-4848-B2B0-93F77A4B8C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFA66AC-6318-4848-B2B0-93F77A4B8C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFA66AC-6318-4848-B2B0-93F77A4B8C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFA66AC-6318-4848-B2B0-93F77A4B8C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2129AF74-A72F-4B7B-A4AD-EBDF1B86F9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2129AF74-A72F-4B7B-A4AD-EBDF1B86F9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2129AF74-A72F-4B7B-A4AD-EBDF1B86F9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2129AF74-A72F-4B7B-A4AD-EBDF1B86F9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D94A1E7-433F-4C1B-A87C-80680291DC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D94A1E7-433F-4C1B-A87C-80680291DC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D94A1E7-433F-4C1B-A87C-80680291DC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D94A1E7-433F-4C1B-A87C-80680291DC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A50CCDF-2EAC-4642-BDAD-03532A29A303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A50CCDF-2EAC-4642-BDAD-03532A29A303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A50CCDF-2EAC-4642-BDAD-03532A29A303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A50CCDF-2EAC-4642-BDAD-03532A29A303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7253EF-D338-45B1-9364-BD3EC2112FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7253EF-D338-45B1-9364-BD3EC2112FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7253EF-D338-45B1-9364-BD3EC2112FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7253EF-D338-45B1-9364-BD3EC2112FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+*.exe
+*.stackdump
+*.tmp
+GPATH
+GRTAGS
+GTAGS
+
+

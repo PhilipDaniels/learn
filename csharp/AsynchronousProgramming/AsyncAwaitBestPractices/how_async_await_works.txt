@@ -1,0 +1,9 @@
+﻿The “async” keyword enables the “await” keyword in that method and changes how method results are
+handled. That’s all the async keyword does! There are no background threads involved.
+
+An async method
+  1. Runs normally (synchronously) until "await" is hit.
+  2. await checks its awaitable. If it has completed then the method continues running normally.
+     If it has not completed, it tells the awaitable to run the remainder of the method when it
+     completes, and then returns from the async method.
+  3. Later on, when the awaitable completes, it will execute the remainder of the async method
