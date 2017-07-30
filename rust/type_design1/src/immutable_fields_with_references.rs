@@ -48,3 +48,9 @@ impl<'a> ImmutableFieldsWithReferences<'a> {
         self.e
     }
 }
+
+// TODO: We can have a mutable reference in a struct.
+struct PointRef<'a> {
+    x: &'a mut i32,
+    y: &'a mut i32,
+}
