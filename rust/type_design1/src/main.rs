@@ -1,10 +1,14 @@
+mod best_practice;
 mod immutable_fields;
 mod immutable_fields_with_references;
 mod private_fields;
+mod with_options;
 
+use best_practice::*;
 use immutable_fields::*;
 use immutable_fields_with_references::*;
 use private_fields::*;
+use with_options::*;
 
 fn main() {
     /* Static strings are immutable. This won't compile.
@@ -15,6 +19,8 @@ fn main() {
     test_private_fields();
     test_immutable_fields();
     test_immutable_fields_with_references();
+    test_with_options();
+    test_best_practice();
 }
 
 fn test_private_fields() {
@@ -61,4 +67,20 @@ fn test_immutable_fields_with_references() {
     let e2 = i.get_e();
 
     println!("i.e = {}", i.get_e());
+}
+
+fn test_with_options() {
+    let s = String::from("The string");
+
+    let wo = WithOptions::new(&s);
+    let a = wo.get_a();
+    let b = wo.get_b();
+    println!("wo.a = {:?}, wo.b = {:?}, wo.c = {:?}", wo.get_a(), wo.get_b(), wo.get_c());
+}
+
+fn test_best_practice() {
+    let s = String::from("A string from the surrounding scope");
+
+    let bp = BestPractice::new(&s);
+    println!("bp.a = {:?}, bp.b = {:?}, bp.c = {:?}, bp.d = {:?}", bp.get_a(), bp.b, bp.get_c(), bp.get_d());
 }
