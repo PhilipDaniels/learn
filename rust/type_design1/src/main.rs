@@ -1,7 +1,9 @@
 mod immutable_fields;
+mod immutable_fields_with_references;
 mod private_fields;
 
 use immutable_fields::*;
+use immutable_fields_with_references::*;
 use private_fields::*;
 
 fn main() {
@@ -10,7 +12,12 @@ fn main() {
     ss[0] = 'A';
      */
 
+    test_private_fields();
+    test_immutable_fields();
+    test_immutable_fields_with_references();
+}
 
+fn test_private_fields() {
     let p = PrivateFields::new();
     println!("p.a = {}", p.get_a());
     /* These are private and won't compile.
@@ -18,8 +25,9 @@ fn main() {
     println!("p.a = {}", p.a);
     */
     //p.b[2] = 'a';
+}
 
-
+fn test_immutable_fields() {
     // Making b public is fine, it is a static string and hence immutable.
     let mut i = ImmutableFields::new();
     println!("i.b = {}", i.b);
@@ -44,4 +52,13 @@ fn main() {
     }
 
     println!("i.c = {}", i.get_c());
+}
+
+fn test_immutable_fields_with_references() {
+    let s = String::from("The string");
+    let mut i = ImmutableFieldsWithReferences::new(&s);
+    let e = i.get_e();
+    let e2 = i.get_e();
+
+    println!("i.e = {}", i.get_e());
 }
