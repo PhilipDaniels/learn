@@ -57,7 +57,7 @@ impl BufferCollection {
 }
 
 pub fn run() {
-    println!("********* int_to_int *********");
+    println!("********* HashMap<i64, RefCell<Buffer>> examples *********");
 
     let mut fac = BufferFactory::new();
     let mut buffers = BufferCollection::new();

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 
 pub fn run() {
-    println!("********* int_to_string *********");
+    println!("********* HashMap<i32, String> examples *********");
 
     let mut hash : HashMap<i32, String> = HashMap::new();
     hash.insert(0, String::from("hello"));
