@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 
-pub fn int_to_string() {
+pub fn run() {
     println!("********* int_to_string *********");
 
     let mut hash : HashMap<i32, String> = HashMap::new();

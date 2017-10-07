@@ -4,6 +4,7 @@
 mod hashtables;
 
 fn main() {
-    hashtables::intmap::int_to_int();
-    hashtables::stringmap::int_to_string();
+    hashtables::intmap::run();
+    hashtables::stringmap::run();
+    hashtables::ofrefcellvalues::run();
 }
