@@ -1,6 +1,0 @@
-[package]
-name = "hashtables"
-version = "0.1.0"
-authors = ["Philip Daniels <Philip.Daniels1971@gmail.com>"]
-
-[dependencies]
