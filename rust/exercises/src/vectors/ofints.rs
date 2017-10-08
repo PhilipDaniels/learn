@@ -1,11 +1,7 @@
 // print_vec takes an immutable_slice. The elements in the slice are not changeable.
-fn print_vec(slice: &[i32]) {
+fn pass_immutable_slice(slice: &[i32]) {
     // Won't compile.
     // slice[0] = 20;
-
-    for (idx, elem) in slice.iter().enumerate() {
-        println!("vec[{}] = {}", idx, elem);
-    }
 }
 
 // We can also get a mutable slice, where we can change the elements.
@@ -19,26 +15,24 @@ pub fn run() {
     // Create using ctor and type inference.
     let mut vec = Vec::new();
     vec.push(1);
+    // Remove the last element. Returns Option<T>: None if the vec is empty.
+    let elem = vec.pop().unwrap();
 
     // Create using a macro.
     let mut vec = vec![10, 20, 30, 40, 50];
 
     // If a function does not need to add, remove or change elements, then pass an immutable slice.
-    println!("Slicing the entire vector...");
-    print_vec(&vec);
-    println!("Slicing the first four elements...");
-    print_vec(&vec[0..4]);
+    pass_immutable_slice(&vec);
+    pass_immutable_slice(&vec[0..4]);
 
     vec.truncate(2);
-    println!("Truncating to length of 2...");
-    print_vec(&vec);
+    println!("vec after truncating to length of 2: {:?}", &vec);
 
     // These two calls are equivalent.
     pass_mutable_slice(&mut vec);
     pass_mutable_slice(vec.as_mut_slice());
 
-    println!("After mutating a slice...");
-    print_vec(&vec);
+    println!("vec after mutating a slice: {:?}", &vec);
 
     // Summary
     //     &vec is equivalent to vec.as_slice() and yields an immutable slice
@@ -46,15 +40,13 @@ pub fn run() {
 
     vec.insert(0, 50);              // Insert an element at index = 0.
     let elem = vec.remove(1);       // Remove the element at index = 1.
-    println!("After insert and remove...");
-    print_vec(&vec);
+    println!("After insert and remove: {:?}", &vec);
 
     // Reinitialize.
     let mut vec = vec![10, 20, 30, 40, 50];
-
-    println!("After retaining only elements matching a predicate...");
     vec.retain(|&elem| elem == 20 || elem == 40);
-    print_vec(&vec);
+
+    println!("After retaining only elements matching a predicate: {:?}", &vec);
 
     // Try that again, using a lambda for the predicate.
     // The two predicates are the same. Not sure why.
@@ -62,32 +54,19 @@ pub fn run() {
     let pred = |elem: &i32| *elem == 20 || *elem == 40;
     let pred = |&elem: &i32| elem == 20 || elem == 40;
     vec.retain(&pred);
-    println!("After retaining only elements matching a predicate (lambda)...");
-    print_vec(&vec);
+    println!("After retaining only elements matching a predicate (lambda): {:?}", &vec);
 
     // Negating the predicate, not sure if this is the best way.
     vec.retain(|&elem| !pred(&elem));
 
-    // Add an element to the end.
-    vec.push(555);
-
-    // Remove the last element. Returns Option<T>: None if the vec is empty.
-    let elem = vec.pop().unwrap();
-
     // We can append a vec, but it does a 'move' of all the elements from the vec2 we are appending.
     let mut vec = vec![10, 20, 30, 40, 50];
-    println!("vec before append of vec2...");
-    print_vec(&vec);
-
+    println!("vec before append of vec2: {:?}", &vec);
     let mut vec2 = vec![-10, -20, -30];
     vec.append(&mut vec2);
+    println!("vec after append of vec2: {:?}", &vec);
 
-    println!("vec after append of vec2...");
-    print_vec(&vec);
-
-    println!("vec2 after append to vec (it's empty)...");
-    print_vec(&vec2);
-    println!("See!");
+    println!("vec2 after append to vec (it's empty): {:?}", &vec2);
 
     // We have a lot of methods from come from slices, because vectors implement "Deref<Target = [T]>"
     vec.reverse();
@@ -95,10 +74,8 @@ pub fn run() {
 
     // drain allows us to remove slices of vectors.
     let removed: Vec<_> = vec.drain(2..5).collect();
-    println!("vec after draining 2..5 ...");
-    print_vec(&vec);
-    println!("The items drained...");
-    print_vec(&removed);
+    println!("vec after draining elements 2..5: {:?}", &vec);
+    println!("The items drained: {:?}", &removed);
 
     // Clear is easy enough.
     vec.clear();
@@ -111,20 +88,13 @@ pub fn run() {
 
     // Change length to 5, fill with value of 4.
     vec.resize(5, 4);
-    println!("vec after resizing and filling with a value of 4 ...");
-    print_vec(&vec);
+    println!("vec after resizing and filling with a value of 4: {:?}", &vec);
 
     vec.extend_from_slice(&[100, 200]);
-    println!("vec after extend_from_slice ...");
-    print_vec(&vec);
-
+    println!("vec after extend_from_slice: {:?}", &vec);
 
     let mut vec = vec![1, 2, 2, 3, 2];
-    println!("vec before dedup ...");
-    print_vec(&vec);
+    println!("vec before dedup: {:?}", &vec);
     vec.dedup();
-    println!("vec after dedup (note there is dedup_by_key as well)...");
-    print_vec(&vec);
-
-    println!("vec = {:?}", &vec);;
+    println!("vec after dedup (note there is dedup_by_key as well): {:?}", &vec);
 }
