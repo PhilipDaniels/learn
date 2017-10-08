@@ -65,7 +65,7 @@ fn min_by<F>(self, compare: F) -> Option<Self::Item>        Returns the element 
 fn max(self) -> Option<Self::Item>                          Returns the maximum element of an iterator.
 fn max_by_key<A, F>(self, f: F) -> Option<Self::Item>       Returns the element that gives the maximum value from the specified function.
 fn max_by<F>(self, compare: F) -> Option<Self::Item>        Returns the element that gives the maximum value with respect to the specified comparison function.
-fn sum<S>(self) -> S                                        Sums the elements of an iterator.
+fn sum<T>(self) -> T                                        Sums the elements of an iterator.
 fn product<P>(self) -> P                                    Iterates over the entire iterator, multiplying all the elements
 fn scan<St, A, F>(self, initial_state: St, f: F) -> Scan<Self, St, F>   An iterator adaptor similar to fold that holds internal state and produces a new iterator.
 
