@@ -57,17 +57,17 @@ fn position<P>(&mut self, predicate: P) -> Option<usize>    Searches for an elem
 fn rposition<P>(&mut self, predicate: P) -> Option<usize>   Version of position<P> that scans backwards from the end.
 
 ### Reducing
-fn collect<B>(self) -> B                                    Transforms an iterator into a collection.
-fn fold<B, F>(self, init: B, f: F) -> B                     An iterator adaptor that applies a function, producing a single, final value.
+fn collect<A>(self) -> A                                    Transforms an iterator into a collection.
+fn fold<A, F>(self, init: A, f: F) -> A                     An iterator adaptor that applies a function, producing a single, final value.
 fn min(self) -> Option<Self::Item>                          Returns the minimum element of an iterator.
-fn min_by_key<B, F>(self, f: F) -> Option<Self::Item>       Returns the element that gives the minimum value from the specified function.
+fn min_by_key<A, F>(self, f: F) -> Option<Self::Item>       Returns the element that gives the minimum value from the specified function.
 fn min_by<F>(self, compare: F) -> Option<Self::Item>        Returns the element that gives the minimum value with respect to the specified comparison function.
 fn max(self) -> Option<Self::Item>                          Returns the maximum element of an iterator.
-fn max_by_key<B, F>(self, f: F) -> Option<Self::Item>       Returns the element that gives the maximum value from the specified function.
+fn max_by_key<A, F>(self, f: F) -> Option<Self::Item>       Returns the element that gives the maximum value from the specified function.
 fn max_by<F>(self, compare: F) -> Option<Self::Item>        Returns the element that gives the maximum value with respect to the specified comparison function.
 fn sum<S>(self) -> S                                        Sums the elements of an iterator.
 fn product<P>(self) -> P                                    Iterates over the entire iterator, multiplying all the elements
-fn scan<St, B, F>(self, initial_state: St, f: F) -> Scan<Self, St, F>   An iterator adaptor similar to fold that holds internal state and produces a new iterator.
+fn scan<St, A, F>(self, initial_state: St, f: F) -> Scan<Self, St, F>   An iterator adaptor similar to fold that holds internal state and produces a new iterator.
 
 ### Free Functions
 pub fn once<T>(value: T) -> Once<T>         Creates an iterator that yields an element exactly once. This is commonly used to adapt a single value into a chain of other kinds of iteration.
