@@ -9,4 +9,5 @@ fn main() {
     hashtables::stringmap::run();
     hashtables::ofrefcellvalues::run();
     vectors::ofints::run();
+    vectors::ofstrings::run();
 }
