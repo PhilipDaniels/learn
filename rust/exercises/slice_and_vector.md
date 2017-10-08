@@ -2,11 +2,11 @@
 Slices are either mutable or shared. The shared slice type is &[T], while the mutable slice type is &mut [T]
 
 ### Construction
-fn clone_from_slice(&mut self, src: &[T])       Copies the elements from src into self. The length of src must be the same as self.
-fn copy_from_slice(&mut self, src: &[T])        Copies all elements from src into self, using a memcpy. The length of src must be the same as self.
-fn to_vec(&self) -> Vec<T>                      Copies self into a new Vec.
-fn into_vec(self: Box<[T]>) -> Vec<T>           Converts self into a vector without clones or allocation.
-fn to_owned(&self) -> Vec<T>                    Creates owned data from borrowed data, usually by cloning.
+* fn clone_from_slice(&mut self, src: &[T])       Copies the elements from src into self. The length of src must be the same as self.
+* fn copy_from_slice(&mut self, src: &[T])        Copies all elements from src into self, using a memcpy. The length of src must be the same as self.
+* fn to_vec(&self) -> Vec<T>                      Copies self into a new Vec.
+* fn into_vec(self: Box<[T]>) -> Vec<T>           Converts self into a vector without clones or allocation.
+* fn to_owned(&self) -> Vec<T>                    Creates owned data from borrowed data, usually by cloning.
 
 ### Queries
 fn len(&self) -> usize                          Returns the number of elements in the slice.
