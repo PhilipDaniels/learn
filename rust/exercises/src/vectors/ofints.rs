@@ -97,4 +97,34 @@ pub fn run() {
     println!("vec before dedup: {:?}", &vec);
     vec.dedup();
     println!("vec after dedup (note there is dedup_by_key as well): {:?}", &vec);
+
+
+
+    // Get an element.
+    let elem = vec[2];
+
+    // Get a shared reference to an element. The assignment won't compile.
+    let elem = &vec[2];
+    //*elem = 22;
+
+    // Get a mutable reference to an element.
+    {
+        let mut vec = vec![1, 2, 2, 3, 2];
+        let elem = &mut vec[2];
+        *elem = 22;
+    }
+
+    {
+        let mut vec = vec![1, 2, 2, 3, 2];
+        // Set an element.
+        vec[2] = 3;
+    }
+
+    // How to append a clone.
+    let mut vec = vec![1, 2, 3];
+    let mut vec2 = vec![4, 5, 6];
+
+    vec.extend_from_slice(&vec2);
+    println!("vec after append_from_slice: {:?}", &vec);
+    println!("vec2 after append_from_slice: {:?}", &vec2);
 }
