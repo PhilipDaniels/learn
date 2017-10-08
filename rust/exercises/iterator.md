@@ -6,6 +6,14 @@ See also: https://doc.rust-lang.org/std/iter/trait.IntoIterator.html
     for types which describe a collection of some kind. One benefit of implementing IntoIterator is that your type
     will work with Rust's for loop syntax."
 
+3 main types:
+    iter(), which iterates over &T.
+	iter_mut(), which iterates over &mut T.
+	into_iter(), which iterates over T (i.e. it takes ownership).
+
+Linq samples in Rust: https://gist.github.com/leonardo-m/6e9315a57fe9caa893472c2935e9d589
+Iterator extensions : https://github.com/bluss/rust-itertools
+
 ### Construction & Conversion
 Call iter() on a slice or other collection type.
 fn clone(&self) -> Iter<'a, T>                      Returns a copy of the value.
@@ -73,3 +81,12 @@ fn scan<St, A, F>(self, initial_state: St, f: F) -> Scan<Self, St, F>   An itera
 pub fn once<T>(value: T) -> Once<T>         Creates an iterator that yields an element exactly once. This is commonly used to adapt a single value into a chain of other kinds of iteration.
 pub fn repeat<T>(elt: T) -> Repeat<T>       Creates a new iterator that endlessly repeats a single element.
 pub fn empty<T>() -> Empty<T>               Creates an iterator that yields nothing.
+
+
+### Linq stuff that is not directly implemented
+Single/OrDefault
+Union
+Intersect
+Join
+First
+Distinct

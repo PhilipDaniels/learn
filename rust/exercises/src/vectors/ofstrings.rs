@@ -57,14 +57,13 @@ pub fn run() {
     println!("s = {:?}", &s);
 
 
-    let v2 = v.iter().map(|s| s.as_str()).collect::<Vec<_>>();
-    let s = get_unique_title(&proposed, &v2);
+    let mut v2 = v.iter().map(|s| s.as_str());
+    let s = get_unique_title_for_iterator(&proposed, &mut v2);
     println!("s = {:?}", &s);
 }
 
 fn get_unique_title(proposed: &str, existing_titles: &[&str]) -> String {
     if !existing_titles.contains(&proposed) {
-        println!("The vector {:?} does not contain {:?}", &existing_titles, &proposed);
         return proposed.to_string()
     }
 
@@ -98,44 +97,3 @@ fn get_unique_title_for_iterator<'a, I>(proposed: &str, existing_titles: &mut I)
         i += 1;
     }
 }
-
-
-/*
-   fn all_buffers(&self) -> Vec<Ref<Buffer>> {
-        let x : Vec<_> = self.buffers.values().map(|rcb| rcb.borrow()).collect();
-        x
-    }
-
-    /// Title algorithm. We need the ability to uniqueify buffer names. Once a suffix number is
-    /// assigned it is never changed. They can be reused, or even not used (we only allocate them
-    /// for our convenience, and they do not need to go up monotonically like buffer ids do).
-    /// For new buffers not backed by a file "new", then "new 1 " etc.
-    /// For buffers backed by a file, the leaf filename, then '1' etc.
-    fn get_unique_title(&self, proposed: &str) -> String {
-        //let titles : Vec<_> = self.buffers.values().map(|refcell| refcell.borrow().title.clone()).collect();
-        let titles : Vec<_> = self.all_buffers().iter().map(|x| x.title.clone()).collect();
-
-        inner_get_unique_title(proposed, &titles)
-    }
-}
-
-fn inner_get_unique_title(proposed: &str, current_titles: &[String]) -> String {
-    let namer = |n: i32| -> String {
-        if n == 0 {
-            return String::from(proposed)
-        } else {
-            return String::from(proposed) + " " + &n.to_string()
-        }
-    };
-
-    let mut i = 0;
-    loop {
-        let p = namer(i);
-        if !current_titles.contains(&p) {
-            return p
-        } else {
-            i += 1
-        }
-    }
-}
-*/
