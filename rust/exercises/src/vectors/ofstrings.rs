@@ -62,6 +62,7 @@ pub fn run() {
     println!("s = {:?}", &s);
 }
 
+// Solution taking a vector of &str.
 fn get_unique_title(proposed: &str, existing_titles: &[&str]) -> String {
     if !existing_titles.contains(&proposed) {
         return proposed.to_string()
@@ -69,17 +70,16 @@ fn get_unique_title(proposed: &str, existing_titles: &[&str]) -> String {
 
     let mut i = 1;
     loop {
-        let proposed = format!("{} {}", &proposed, i);
-        if !existing_titles.contains(&proposed.as_str()) {
-            return proposed;
+        let prop2 = format!("{} {}", &proposed, i);
+        if !existing_titles.contains(&prop2.as_str()) {
+            return prop2;
         }
 
         i += 1;
     }
 }
 
-// How to write a function that takes an iterator and call it with an iterator,
-// a slice, or a vector?
+// Solution taking an iterator that yields &strs.
 fn get_unique_title_for_iterator<'a, I>(proposed: &str, existing_titles: &mut I) -> String
     where I: Iterator<Item=&'a str> {
 
@@ -89,11 +89,32 @@ fn get_unique_title_for_iterator<'a, I>(proposed: &str, existing_titles: &mut I)
 
     let mut i = 1;
     loop {
-        let proposed = format!("{} {}", &proposed, i);
-        if existing_titles.find(|elem| elem == &proposed).is_none() {
-            return proposed;
+        let prop2 = format!("{} {}", &proposed, i);
+        if existing_titles.find(|elem| elem == &prop2).is_none() {
+            return prop2;
         }
 
         i += 1;
     }
 }
+
+/*
+// Aim for a solution that can be called with a Vec<String> or a Vec<str>. Doesn't work yet.
+fn get_unique_title2<T: AsRef<str>>(proposed: T, existing_titles: &[T]) -> String
+    where T: PartialEq
+{
+    if !existing_titles.contains(&proposed) {
+        return proposed.as_ref().to_string()
+    }
+
+    let mut i = 1;
+    loop {
+        let prop2 = format!("{} {}", proposed.as_ref(), i);
+        if !existing_titles.contains(&prop2.as_str()) {
+            return prop2;
+        }
+
+        i += 1;
+    }
+}
+*/
