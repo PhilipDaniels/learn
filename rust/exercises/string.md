@@ -110,6 +110,10 @@ fn clear(&mut self)                                             Truncates this S
 fn drain<R>(&mut self, range: R) -> Drain                       Creates a draining iterator that removes the specified range in the string and yields the removed chars.
 fn splice<R>(&'a mut self, range: R, replace_with: &'b str) -> Splice<'a, 'b>   Creates a splicing iterator that removes the specified range in the string, replaces with the given string, and yields the removed chars.
 
+### Formatting
+format!("{} to {}", a, b)                                       Format macro can create new strings.
+write!(&mut the_str, "{}", a).unwrap()                          Since String implements the Write trait.
+
 ### Memory Management
 fn reserve(&mut self, additional: usize)                        Ensures that this String's capacity is at least additional bytes larger than its length.
 fn reserve_exact(&mut self, additional: usize)                  Ensures that this String's capacity is additional bytes larger than its length.
