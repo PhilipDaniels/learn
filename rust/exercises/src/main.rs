@@ -3,6 +3,9 @@
 
 mod hashtables;
 mod vectors;
+mod options;
+mod results;
+mod iterators;
 
 fn main() {
     hashtables::intmap::run();
@@ -10,4 +13,5 @@ fn main() {
     hashtables::ofrefcellvalues::run();
     vectors::ofints::run();
     vectors::ofstrings::run();
+    options::ofints::run();
 }
