@@ -10,22 +10,26 @@ fn ok_or_else<E, F>(self, err: F) -> Result<T, E>	    Transforms the Option<T> i
 fn is_some(&self) -> bool               	            Returns true if the option is a Some value.
 fn is_none(&self) -> bool	                            Returns true if the option is a None value.
 
-### Functions for getting at the value
+### Unwrapping
 fn expect(self, msg: &str) -> T	                        Unwraps an option, yielding the content of a Some. Panics if the value is a None with a custom panic message provided by msg.
 fn unwrap(self) -> T	                                Moves the value v out of the Option<T> if it is Some(v). Panics if the self value equals None.
 fn unwrap_or(self, def: T) -> T	                        Returns the contained value or a default.
 fn unwrap_or_default(self) -> T	                        Returns the contained value or a default
 fn unwrap_or_else<F>(self, f: F) -> T	                Returns the contained value or computes it from a closure.
+
+### Mapping
+fn map<U, F>(self, f: F) -> Option<U>	                Applies a function to the contained value (if any), or returns None. Consumes the original value (see as_ref for a way around this) and always applies a new wrapping.
 fn map_or<U, F>(self, default: U, f: F) -> U	        Applies a function to the contained value (if any), or returns a default (if not).
 fn map_or_else<U, D, F>(self, default: D, f: F) -> U	Applies a function to the contained value (if any), or computes a default (if not).
 
-### Functions that return another Option<T>, good for chaining operations
-fn map<U, F>(self, f: F) -> Option<U>	                Maps an Option<T> to Option<U> by applying a function to a contained value. Consumes the original value (see as_ref for a way around this) and always applies a new wrapping.
-fn and<U>(self, optb: Option<U>) -> Option<U>	        Returns None if the option is None, otherwise returns optb.
-fn and_then<U, F>(self, f: F) -> Option<U>	            Returns None if the option is None, otherwise calls f with the wrapped value and returns the result.
-fn or(self, optb: Option<T>) -> Option<T>	            Returns the option if it contains a value, otherwise returns optb.
-fn or_else<F>(self, f: F) -> Option<T>	                Returns the option if it contains a value, otherwise calls f and returns the result.
+### Chaining Operators
+fn and_then<U, F>(self, f: F) -> Option<U>	            Call the closure if the value is Some, else return None.
+fn or_else<F>(self, f: F) -> Option<T>	                Call the closure if the value is None, else return the value.
 fn take(&mut self) -> Option<T>	                        Takes the value out of the option, leaving a None in its place.
+
+### Logical Operators
+fn or(self, optb: Option<T>) -> Option<T>	            Returns the option if it contains a value, otherwise returns optb.
+fn and<U>(self, optb: Option<U>) -> Option<U>	        Returns None if the option is None, otherwise returns optb.
 
 ### Iteration
 fn iter(&self) -> Iter<T>	                            Returns an iterator over the possibly contained value.
