@@ -14,4 +14,5 @@ fn main() {
     vectors::ofints::run();
     vectors::ofstrings::run();
     options::ofints::run();
+    options::ofstrings::run();
 }
