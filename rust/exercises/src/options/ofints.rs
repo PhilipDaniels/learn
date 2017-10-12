@@ -57,7 +57,7 @@ fn demo_as_mut() {
     {
         // Again, but using as_mut();
         // c is of type Option<&mut i32>.
-        // Now when we pattern match, we get an &i32 by default.
+        // Now when we pattern match, we get an &mut i32 by default.
         let c = a.as_mut();
         if let Some(x) = c {
             println!("IF LET: x (from c) = {}. x is of type &mut i32 and can be changed.", x);
@@ -214,6 +214,6 @@ fn demo_map() {
     // Note that the default-calculating closure for map_or_else() takes no arguments.
     let a : Option<i32> = None;
     let x = 2222;
-    let result = a.map_or_else(|| x.to_string(), |x| x.to_string());
+    let result = a.map_or_else(|| x.to_string(), |y| y.to_string());
     assert_eq!(result, "2222".to_string());
 }
