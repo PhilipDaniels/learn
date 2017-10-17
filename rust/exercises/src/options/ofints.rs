@@ -9,6 +9,7 @@ pub fn run() {
     demo_logical_or_and_combinators();
     demo_chaining();
     demo_map();
+    demo_collection_of_options();
 }
 
 fn demo_basic_matching() {
@@ -216,4 +217,51 @@ fn demo_map() {
     let x = 2222;
     let result = a.map_or_else(|| x.to_string(), |y| y.to_string());
     assert_eq!(result, "2222".to_string());
+}
+
+fn make_vector() -> Vec<Option<i32>> {
+    vec![
+        Some(5),
+        Some(10),
+        None,
+        Some(100),
+        None,
+        Some(101),
+        Some(20),
+        None
+    ]
+}
+
+fn demo_collection_of_options() {
+    println!(">>> demo_collection_of_options");
+
+    let v = make_vector();
+
+    // Get all Somes. See doc for filter for why the reference is there.
+    let i = v.iter();
+    let somes : Vec<_> = i.filter(|&x| !x.is_none()).collect();
+    println!("somes = {:?}", somes);
+
+    // Count Nones.
+    let i = v.iter();
+    let noneCount = i.filter(|&x| x.is_none()).count();
+    println!("noneCount = {:?}", noneCount);
+
+    // Total everything up.
+    let i = v.iter();
+    let sum : i32 = i.filter(|&x| !x.is_none()).map(|x| x.unwrap()).sum();
+    println!("sum = {:?}", sum);
+
+    // Find max element. This works because max() is defined for Option<i32>.
+    // max() then wraps the maximum item in another Option, hence the double unwrap.
+    let i = v.iter();
+    let max = i.max().unwrap().unwrap();
+    println!("max = {:?}", max);
+
+    // Partition odd/even.
+    let i = v.iter();
+    let (evens, odds) : (Vec<i32>, Vec<i32>) = i.filter(|&x| !x.is_none())
+        .map(|x| x.unwrap())
+        .partition(|&x| x % 2 == 0);
+    println!("evens = {:?}, odds = {:?}", evens, odds);
 }
