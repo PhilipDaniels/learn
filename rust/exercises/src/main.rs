@@ -16,4 +16,5 @@ fn main() {
     options::ofints::run();
     options::ofstrings::run();
     options::ofrefsofthings::run();
+    iterators::ofints::run();
 }
