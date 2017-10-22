@@ -1,4 +1,5 @@
 use std::slice::Iter;
+use std::iter::Filter;
 
 fn make_vec() -> Vec<i32> {
     vec![4, 5, 6, -1, -100, 2, 400, 400, 500, 600, 11, 13, 15, 17, 19, 21, 23, 25]
@@ -11,6 +12,9 @@ pub fn run() {
     demo_find();
     demo_enumerate();
     demo_chain();
+    demo_filter();
+    demo_reduction();
+    demo_map();
 }
 
 fn demo_skip_take() {
@@ -91,5 +95,50 @@ fn demo_chain() {
 }
 
 
-// Returning an iterator from a function. e.g. make an iterator over the first 3 and last 3 elements.
+/*
+// This is HARD: see https://stackoverflow.com/questions/27535289/what-is-the-correct-way-to-return-an-iterator
+fn return_iterator_from_function() -> Filter<Iter<i32>, fn(&i32) -> bool> {
+    let v = make_vec();
+    v.iter().filter(|&x| x % 2 == 0)
+}
+*/
+
+fn demo_filter() {
+    println!(">>> demo_filter");
+
+    let v = make_vec();
+    let result : Vec<_> = v.iter().filter(|&x| x %2 == 0).collect();
+    println!("v.filter(x %2 == 0) = {:?}", result);
+}
+
+fn demo_reduction() {
+    println!(">>> demo_reduction");
+
+    let v = make_vec();
+    let result : i32 = v.iter().filter(|&x| x %2 == 0).sum();
+    println!("v.sum = {:?}", result);
+
+    let v = make_vec();
+    let result = v.iter().fold(100000, |mut agg, &x| { agg += x; agg });
+    println!("v.fold = {:?}", result);
+}
+
+fn demo_map() {
+    println!(">>> demo_map");
+
+    let v = make_vec();
+    let result : Vec<_> = v.iter().map(|&x| x + 1000).collect();
+    println!("v.map (original vector is unchanged) = {:?}", result);
+
+    let mut v = make_vec();
+    v.iter_mut().map(|x| *x = *x + 1000).count();
+    println!("v.map (using iter_mut) = {:?}", v);
+
+    // step_by() requires `#![feature(iterator_step_by)]` in main.rs.
+    let mut v = make_vec();
+    v.iter_mut().step_by(3).map(|x| *x = *x + 5000).count();
+    println!("v.map (using iter_mut and step_by) = {:?}", v);
+}
+
+
 

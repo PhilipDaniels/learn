@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 #![allow(warnings)]
+#![feature(iterator_step_by)]
 
 mod hashtables;
 mod vectors;
