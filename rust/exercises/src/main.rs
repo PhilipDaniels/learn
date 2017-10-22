@@ -2,6 +2,9 @@
 #![allow(warnings)]
 #![feature(iterator_step_by)]
 
+mod buffer;
+mod rect;
+
 mod hashtables;
 mod vectors;
 mod options;
@@ -16,6 +19,7 @@ fn main() {
     vectors::ofstrings::run();
     options::ofints::run();
     options::ofstrings::run();
-    options::ofrefsofthings::run();
+    options::ofrefsofrects::run();
     iterators::ofints::run();
+    iterators::ofrects::run();
 }
