@@ -22,4 +22,5 @@ fn main() {
     options::ofrefsofrects::run();
     iterators::ofints::run();
     iterators::ofrects::run();
+    results::ofrects::run();
 }

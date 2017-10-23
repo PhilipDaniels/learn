@@ -76,7 +76,7 @@ fn demo_as_mut() {
 
     {
         // Similarly to the as_ref() case, we can't use the & in the pattern match because
-        // it will try to move the context out into x.
+        // it will try to move the content out into x.
         // let c = a.as_mut();
         // if let Some(&mut x) = c {
         // }
