@@ -21,6 +21,7 @@ pub fn run() {
     demo_filter();
     demo_reduction();
     demo_map();
+    demo_max();
 }
 
 fn demo_skip_take() {
@@ -147,4 +148,17 @@ fn demo_map() {
     let mut v = make_vec();
     v.iter_mut().step_by(2).map(|x| x.w += 5000).count();
     println!("v.map (using iter_mut and step_by) = {:?}", v);
+}
+
+fn demo_max() {
+    println!(">>> demo_max");
+
+    let v = make_vec();
+    let result = v.iter().max_by_key(|x| x.h);
+    println!("v.max_by_key(by x.h) = {:?}", result);
+
+    // max_by is a little harder to use than max_by_key, which will probably do what you
+    // want in most circumstances, unless you need to bind F as a variable.
+    let result = v.iter().max_by(|a, b| a.title.cmp(&b.title));
+    println!("v.max_by = {:?}", result);
 }
