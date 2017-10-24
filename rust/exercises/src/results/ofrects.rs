@@ -19,7 +19,8 @@ pub fn run() {
     demo_unwrap();
     demo_logical_or_and_combinators();
     demo_chaining();
-    // demo_map();
+    demo_map();
+    demo_chaining2();
     // demo_collection_of_options();
 }
 
@@ -206,45 +207,53 @@ fn demo_chaining() {
     assert_eq!(result, Ok(42));
 }
 
-// fn demo_map() {
-//     println!(">>> demo_map");
-//     let a = Some("hello".to_string());
+fn demo_map() {
+    println!(">>> demo_map");
+    let a = make_result();
 
-//     // Maps an Option<T> to Option<U> by applying a function to a contained value.
-//     // * Consumes the original value (see as_ref for a way around this)
-//     // * and always applies a new wrapping.
-//     let result = a.map(|x| x);
+    // Maps an Result<T, E> to Result<U, E> by applying a function to a contained Ok value.
+    // Leaves an Err value untouched.
+    // * Consumes the original value (see as_ref for a way around this)
+    // * and always applies a new wrapping.
+    let result = a.map(|x| x);
 
-//     // TODO 'Consumes' is NOT misleading in the case of Strings.
-//     // This won't compile because a has been moved.
-//     // assert_eq!(a, None);
-//     // Here is demonstrated the property of automatically wrapping in a Some.
-//     // Note that the closure does not have Some.
-//     assert_eq!(result, Some("hello".to_string()));
+    // TODO 'Consumes' is NOT misleading in the case of Strings.
+    // This won't compile because a has been moved.
+    // assert!(a.is_ok());
 
-//     // Like and_then(), map can change the type of the Option.
-//     let a = Some("hello".to_string());
-//     let result = a.map(|x| x.len());
-//     // assert_eq!(a, Some("hello".to_string()));     Again, won't compile because a is moved.
-//     assert_eq!(result, Some(5));
+    // Here is demonstrated the property of automatically wrapping in an Ok.
+    // Note that the closure (in the call to map above) does not have OK.
+    assert_eq!(result.unwrap().title, "rec");
 
-//     // You can call map() on a None. Nothing happens, the None is propagated and the closure is not called.
-//     // TODO: The documentation is really bad here.
-//     let a : Option<String> = None;
-//     let result = a.map(|x| x.len());
-//     assert_eq!(result, None);
+    // Like and_then(), map can change the type of the Result.
+    let a = make_result();
+    let result = a.map(|x| x.title.len());
+    assert_eq!(result, Ok(3));
 
+    // You can call map() on an Err. Nothing happens, the Err is propagated and the closure is not called.
+    // TODO: The documentation is really bad here.
+    let a = make_err();
+    let result = a.map(|x| x.title.len());
+    assert_eq!(result.unwrap_err(), "oops");
 
-//     // The other two map variants basically allow us to deal with the None by
-//     // supplying a default or a closure to compute a value.
-//     // n.b. These do not return Options, they return values!
-//     let a : Option<String> = None;
-//     let result = a.map_or("hello".len(), |x| x.len());
-//     assert_eq!(result, 5);
+    // map_err allows us to apply a function to an Err value, if any.
+    let a = make_err();
+    let result = a.map_err(|e| e.to_uppercase());
+    assert_eq!(result.unwrap_err(), "OOPS");
+}
 
-//     // Note that the default-calculating closure for map_or_else() takes no arguments.
-//     let a : Option<String> = None;
-//     let x = "hello".to_string();
-//     let result = a.map_or_else(|| x.len(), |y| y.len());
-//     assert_eq!(result, 5);
-// }
+fn demo_chaining2() {
+    // We can use a combination of map() and map_err() to pass results through a chain.
+
+    println!(">>> demo_map");
+    let a = make_result();
+    let result = a.map(|mut x| { x.w += 50; x })
+        .map_err(|e| "never called")
+        .and_then(|_| { let y : Result<Rect, &str> = Err("This changes the Ok to an Err"); y })
+        .map_err(|e| e.to_uppercase())  // Now this map_err closure does get called.
+        .or_else(|e| make_result());    // and this will be called too, so we go back to the original Rect.
+
+    println!("result = {:?}", result);
+}
+
+// See http://blog.burntsushi.net/rust-error-handling/#composing-option-and-result for more.
