@@ -5,6 +5,7 @@
 mod buffer;
 mod rect;
 
+mod api;
 mod hashtables;
 mod vectors;
 mod options;
@@ -23,4 +24,6 @@ fn main() {
     iterators::ofints::run();
     iterators::ofrects::run();
     results::ofrects::run();
+    api::stringlike::run();
+    api::slices::run();
 }
