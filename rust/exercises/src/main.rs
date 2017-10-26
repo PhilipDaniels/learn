@@ -24,6 +24,7 @@ fn main() {
     iterators::ofints::run();
     iterators::ofrects::run();
     results::ofrects::run();
-    api::stringlike::run();
+    api::asref::run();
     api::slices::run();
+    api::from_and_into::run();
 }

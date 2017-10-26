@@ -2,13 +2,12 @@ use std::path::{Path, PathBuf};
 use std::ffi::{OsString, OsStr};
 
 pub fn run() {
-    println!("********* API Design Examples (String-like parameters) *********");
+    println!("********* API Design Examples (AsRef<> for String-like parameters) *********");
 
     // If something is commented out, it won't compile.
     string_examples();
     path_examples();
 }
-
 
 fn string_by_value(s: String) {
 }
@@ -27,9 +26,9 @@ fn string_borrow_or_move<T: AsRef<str>>(s: T) {
     // By declaring that we accept AsRef<str>, we are saying that we will accept anything
     // that can be converted to &str. Sometimes this conversion is free, sometimes it isn't.
     // The conversion is guaranteed to work (not panic).
-    // We have to make that conversion like this (x is of type &str):
+    // We have to make that conversion like this (s is now of type &str):
 
-    let x = s.as_ref();
+    let s = s.as_ref();
 
     // The original 's' parameter has no useful methods, other than as_ref().
     // So we have to call it, and we have to call it manually, as shown above.
@@ -96,4 +95,3 @@ fn path_examples() {
     let c = OsString::from("heee");
     path_or_string(&c);
 }
-
