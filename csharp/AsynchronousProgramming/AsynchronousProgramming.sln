@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitBestPractices", "AsyncAwaitBestPractices\AsyncAwaitBestPractices.csproj", "{A0CD06A4-970E-4159-8DE3-7B32C252E358}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentCollections", "ConcurrentCollections\ConcurrentCollections.csproj", "{5BCB6E08-43C0-44F1-A70F-96223AA2E4A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderWriterLockSlimExample", "ReaderWriterLockSlim\ReaderWriterLockSlimExample.csproj", "{C5DC48B6-989D-4AB3-9BE7-559D37242032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncConsoleApp", "AsyncConsoleApp\AsyncConsoleApp.csproj", "{18D14581-BC03-4FBF-9CFF-C55FFD80F632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5DC48B6-989D-4AB3-9BE7-559D37242032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D14581-BC03-4FBF-9CFF-C55FFD80F632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D14581-BC03-4FBF-9CFF-C55FFD80F632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D14581-BC03-4FBF-9CFF-C55FFD80F632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D14581-BC03-4FBF-9CFF-C55FFD80F632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
