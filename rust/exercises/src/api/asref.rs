@@ -7,6 +7,7 @@ pub fn run() {
     // If something is commented out, it won't compile.
     string_examples();
     path_examples();
+    array_example();
 }
 
 fn string_by_value(s: String) {
@@ -94,4 +95,19 @@ fn path_examples() {
 
     let c = OsString::from("heee");
     path_or_string(&c);
+}
+
+fn array_of_things<T: AsRef<str>>(values: &[T]) {
+    for val in values {
+        // v is of type &str.
+        let v = val.as_ref();
+    }
+}
+
+fn array_example() {
+    let v_of_str = vec!["Hello", "world"];
+    array_of_things(&v_of_str);
+
+    let v_of_strings = vec!["Hello".to_string(), "world".to_string()];
+    array_of_things(&v_of_strings);
 }
