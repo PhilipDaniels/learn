@@ -1,0 +1,9 @@
+${workspaceFolder}/target/debug/${workspaceRootFolderName}.exe
+
+better test assertions
+
+
+Go-To Crates for
+Images
+Date-Time
+Complex Numbers
